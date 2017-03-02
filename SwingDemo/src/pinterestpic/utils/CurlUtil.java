@@ -1,6 +1,7 @@
 package pinterestpic.utils;
 
 import org.apache.http.util.TextUtils;
+import util.TumbrJsonUtil;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,9 +11,11 @@ import java.io.InputStreamReader;
  * Created by root on 17-2-21.
  */
 public class CurlUtil {
-    public static String getStringFromCurl(String dataNew){
+    public static String getStringFromCurl(String url,String fileName){
 
         String []cmds = {"curl"
+                ,"-o"+fileName
+              //  ,url
                 , "https://www.pinterest.com/resource/BoardFeedResource/get/?source_url=%2Fgurra68%2Fencasement%2F&data=%7B%22options%22%3A%7B%22board_id%22%3A%22388224499067219110%22%2C%22is_collaborative%22%3Afalse%2C%22prepend%22%3Atrue%2C%22show_done%22%3Afalse%2C%22centered%22%3Atrue%2C%22board_url%22%3A%22%2Fgurra68%2Fencasement%2F%22%2C%22page_size%22%3Anull%2C%22add_vase%22%3Atrue%2C%22access%22%3A%5B%5D%2C%22board_layout%22%3A%22default%22%2C%22show_rich_snippet%22%3Afalse%2C%22owner%22%3A%22gurra68%22%2C%22bookmarks%22%3A%5B%22LT4zODgyMjQ0MzAzNjEyMzY0NDA6MjA6MjB8M2QxZmRmMGQzMTM0NmRlMGFiZTZhY2IxMzAwYTJiM2NlNDdjZmY4NzdkY2I3Y2MxOTRmZmFmZmVmZGQ1YWZjNw%3D%3D%22%5D%2C%22followed_by_me%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&module_path=App%3EBoardPageWrapper%3EBoardPage%3EGrid%3EGridItems%3EPin(component_type%3D0%2C+dynamic_insertion_channel%3Dboard%2C+main_module_name%3Dnull%2C+shown_from_own_board%3Dfalse%2C+show_board%3Dfalse%2C+use_native_image_width%3Dtrue%2C+show_comments%3Dtrue%2C+delink_commenter%3Dfalse%2C+squish_giraffe_pins%3Dnone%2C+show_pinner%3Dfalse%2C+show_pinned_from%3Dtrue%2C+resource%3DPinResource(main_module_name%3Dnull%2C+id%3D388224430364339715))&_=1487660253070"
                 , "-H","Host: www.pinterest.com"
                 , "-H","User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
@@ -44,5 +47,27 @@ public class CurlUtil {
             e.printStackTrace();
             return "";
         }
+    }
+    public static void main(String[] args) {
+        /*String []cmds = {"curl", "-l","-o baidu.html","http://www.baidu.com"};
+        ProcessBuilder pb=new ProcessBuilder(cmds);
+        pb.redirectErrorStream(true);
+        Process p;
+        try {
+            p = pb.start();
+            BufferedReader br=null;
+            String line=null;
+
+            br=new BufferedReader(new InputStreamReader(p.getInputStream()));
+            while((line=br.readLine())!=null){
+                System.out.println("\t"+line);
+            }
+            br.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }*/
+        String result =TumbrJsonUtil.getStringFromTxt("../../../../baidu.html");
+        System.out.println(result);
     }
 }

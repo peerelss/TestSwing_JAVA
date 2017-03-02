@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SwingDemo/SwingDemo.iml" filepath="$PROJECT_DIR$/SwingDemo/SwingDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/TestSwing.iml" filepath="$PROJECT_DIR$/TestSwing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webssm/webssm.iml" filepath="$PROJECT_DIR$/webssm/webssm.iml" />
     </modules>
   </component>
 </project>

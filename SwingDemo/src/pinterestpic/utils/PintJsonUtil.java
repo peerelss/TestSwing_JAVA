@@ -55,19 +55,31 @@ public class PintJsonUtil {
         try{
             String result="",line="";
             while((line=br.readLine())!=null){
-                if(line.contains("{")){
+                /*if(line.contains("{")){
                     if(line.startsWith("\"")){
                         result=result+line;
                     }else {
                         result=result+line.substring(line.indexOf("{"));
                     }
-                }
+                }*/
+                System.out.println(line);
+                result=result+line;
             }
             System.out.println(result);
             return  result;
         }catch (Exception e){
             e.printStackTrace();
             return "";
+        }
+    }
+    public static void getPicFromAjaxJsonCacha(String str){
+        JSONObject jsonObject=JSON.parseObject(str);
+        JSONArray datas=jsonObject.getJSONArray("resource_data_cache").getJSONObject(0).getJSONArray("data");
+        for(int i=0;i<datas.size();i++){
+            JSONObject data=datas.getJSONObject(i);
+            System.out.println(data.getString("domain"));
+            String originUrl=data.getJSONObject("images").getJSONObject("orig").getString("url");
+            System.out.println(originUrl);
         }
     }
 }
