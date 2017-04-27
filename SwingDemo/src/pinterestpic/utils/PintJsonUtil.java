@@ -82,4 +82,14 @@ public class PintJsonUtil {
             System.out.println(originUrl);
         }
     }
+    public static String getBookMarksFromJson(String str){
+        JSONObject jsonObject=JSON.parseObject(str);
+        JSONArray datas=jsonObject.getJSONArray("resource_data_cache")
+                .getJSONObject(0)
+                .getJSONObject("resource")
+                .getJSONObject("options")
+                .getJSONArray("bookmarks");
+
+        return datas.get(0).toString();
+    }
 }
