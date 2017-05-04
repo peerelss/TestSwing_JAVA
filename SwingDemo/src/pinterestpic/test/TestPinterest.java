@@ -8,6 +8,8 @@ import pinterestpic.utils.PinterestStringUtils;
 import sun.rmi.runtime.Log;
 import util.TumbrJsonUtil;
 
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.logging.Logger;
 
 /**
@@ -15,17 +17,33 @@ import java.util.logging.Logger;
  */
 public class TestPinterest {
     static Logger log = Logger.getLogger(TumblrImagesManager.class.getName());
-    public static void main(String[] args){
+    static int i=0;
+    public static void main(String[] args)throws Exception{
       //  CurlUtil.getStringFromCurl(PinterestConf.urlInit,"baidu.html");
-        getPinterest();
+     //   log.info(PinterestStringUtils.getPinterestAJAXURL(""));
+        getPinterest("");
 
     }
-    public static void getPinterest(){
-        CurlUtil.getStringFromCurl(PinterestConf.urlInit,"baidu.html");
+    public static void getPinterest(String book){
+        try{
+        log.info(" page = "+i);
+        i++;
+        CurlUtil.getStringFromCurl(PinterestStringUtils.getPinterestAJAXURL(book),"baidu.html");
         String result = TumbrJsonUtil.getStringFromTxt("/home/kevin/Documents/word_space/javaproject/TestSwing/baidu.html");
         System.out.println(result);
         PintJsonUtil.getPicFromAjaxJsonCacha(result);
-        log.info(PintJsonUtil.getBookMarksFromJson(result));
+        String bookMarks=PintJsonUtil.getBookMarksFromJson(result);
+        log.info("book marks = "+bookMarks);
+        if(i>0){
+            return;
+        }
+        if(bookMarks==null|bookMarks.equals("")){
+            return;
+        }else {
+            getPinterest(bookMarks);
+        }}catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
 

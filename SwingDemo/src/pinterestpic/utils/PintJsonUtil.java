@@ -73,6 +73,9 @@ public class PintJsonUtil {
         }
     }
     public static void getPicFromAjaxJsonCacha(String str){
+        if(str==null||str.equals("")){
+            return;
+        }
         JSONObject jsonObject=JSON.parseObject(str);
         JSONArray datas=jsonObject.getJSONArray("resource_data_cache").getJSONObject(0).getJSONArray("data");
         for(int i=0;i<datas.size();i++){
@@ -83,6 +86,9 @@ public class PintJsonUtil {
         }
     }
     public static String getBookMarksFromJson(String str){
+        if(str==null||str.equals("")){
+            return null;
+        }
         JSONObject jsonObject=JSON.parseObject(str);
         JSONArray datas=jsonObject.getJSONArray("resource_data_cache")
                 .getJSONObject(0)
