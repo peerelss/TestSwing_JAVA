@@ -11,7 +11,8 @@ import java.util.logging.Logger;
 public class StringUtilsTest {
     static Logger log = Logger.getLogger(TumblrImagesManager.class.getName());
     public static void main(String[] args)throws  Exception{
-        String url="/crazyb7/dita-von-teese/&data={\"options\":{\"bookmarks\":[\"LT4zMjE1MTQ4NjA4ODM3MjYzNDI6MjU6MjV8NjQ0M2NjYjg3MzhjNmFkMGY5Y2U1OWRmZGFjN2VjMTY4YTdjNzlmMWM3MGM3Nzc5ZDBmODc3ZTBmYTZmNmZhOQ==\"],\"access\":[],\"board_id\":\"321514929586702272\",\"board_url\":\"/crazyb7/dita-von-teese/\",\"field_set_key\":\"react_grid_pin\",\"layout\":\"default\",\"page_size\":25},\"context\":{}}&_=1493260546926";
-        System.out.println(URLEncoder.encode(url,"UTF-8"));
+        String url="http://cfake.com/picture/Strapon/62/3";
+        url=url.substring(url.indexOf("picture")+8,url.length()-5);
+        System.out.println(url);
     }
 }

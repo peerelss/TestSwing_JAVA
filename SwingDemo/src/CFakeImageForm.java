@@ -1,3 +1,6 @@
+import cfake.BtsouMagnetManager;
+import cfake.CFakePicturesDownload;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +20,13 @@ public class CFakeImageForm {
         mStartButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String url=mTextField2.getText();
+                int size=Integer.valueOf(mTextField1.getText());
+                if(url.contains("btsou")){
+                    BtsouMagnetManager.getInstance().init(url,size);
+                }else {
+                    CFakePicturesDownload.getInstance().init(url,size);
+                }
 
             }
         });
